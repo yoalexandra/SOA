@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoryViewCell
 
 class ViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,11 +44,13 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? StoryCell else { return UITableViewCell() }
+        
+        let cell: StoryViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? StoryViewCell ??
+        StoryViewCell(style: .default, reuseIdentifier: "Cell")
         cell.selectionStyle = .none
         let story = self.items[indexPath.row]
-        cell.title.text = story.title
-        cell.descriptionLabel.text = story.abstract
+        cell.titleTextLabel.text = story.title
+        cell.detailLabel.text = story.abstract
         return cell
     }
 }

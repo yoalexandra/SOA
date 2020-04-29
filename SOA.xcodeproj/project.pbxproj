@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA29EDA3245A0A8A00BCAE6F /* StoryViewCell in Frameworks */ = {isa = PBXBuildFile; productRef = FA29EDA2245A0A8A00BCAE6F /* StoryViewCell */; };
 		FA8A8AF32458D0EE00523A04 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8AF22458D0EE00523A04 /* StoryCell.swift */; };
 		FA8A8AF52458DD3300523A04 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8AF42458DD3300523A04 /* NetworkError.swift */; };
 		FA8A8AF72458DD6100523A04 /* StoriesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8AF62458DD6100523A04 /* StoriesManager.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA29ED9E245A099C00BCAE6F /* StoryViewCell */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StoryViewCell; sourceTree = "<group>"; };
 		FA8A8AF22458D0EE00523A04 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		FA8A8AF42458DD3300523A04 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FA8A8AF62458DD6100523A04 /* StoriesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesManager.swift; sourceTree = "<group>"; };
@@ -45,12 +47,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA29EDA3245A0A8A00BCAE6F /* StoryViewCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA29ED9F245A09C700BCAE6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FA8A8AF12458D0B600523A04 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,8 +92,10 @@
 		FADBB77D2444DA4000BDDFF8 = {
 			isa = PBXGroup;
 			children = (
+				FA29ED9E245A099C00BCAE6F /* StoryViewCell */,
 				FADBB7882444DA4000BDDFF8 /* SOA */,
 				FADBB7872444DA4000BDDFF8 /* Products */,
+				FA29ED9F245A09C700BCAE6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +140,9 @@
 			dependencies = (
 			);
 			name = SOA;
+			packageProductDependencies = (
+				FA29EDA2245A0A8A00BCAE6F /* StoryViewCell */,
+			);
 			productName = SOA;
 			productReference = FADBB7862444DA4000BDDFF8 /* SOA.app */;
 			productType = "com.apple.product-type.application";
@@ -390,6 +405,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA29EDA2245A0A8A00BCAE6F /* StoryViewCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StoryViewCell;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FADBB77E2444DA4000BDDFF8 /* Project object */;
 }
