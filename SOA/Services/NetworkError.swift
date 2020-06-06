@@ -9,7 +9,8 @@
 import Foundation
 
 enum NetworkError: Error {
-    case invalidData
-    case invalidResponse
-    case invalidRequest
+    case invalidData(string: String)
+    case invalidResponse(string: String)
+    case parser(string: String)
+    case invalidRequest(string: String)
 }

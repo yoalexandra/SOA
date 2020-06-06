@@ -8,14 +8,15 @@
 
 import Foundation
 
-struct Story: Codable, Equatable {
+struct Story {
     
-    let section: String
-    let subsection: String
     let title: String
     let abstract: String
-    let byline: String
-    let url: String
+
+    init(title: String, abstract: String) {
+        self.title = title
+        self.abstract = abstract
+    }
 }
 
 

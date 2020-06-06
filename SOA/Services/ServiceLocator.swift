@@ -9,7 +9,10 @@
 import Foundation
 
 class ServiceLocator {
-    private var registry : [String: Any] = [:]
+    
+    static let shared = ServiceLocator()
+    
+    private var registry: [String: Any] = [:]
     
     func registerService<T>(service: T) {
         let key = "\(T.self)"
