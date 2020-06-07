@@ -31,7 +31,6 @@ class ViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-  
     }
 }
 
@@ -45,8 +44,7 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? StoryCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         let story = self.items[indexPath.row]
-        cell.title.text = story.title
-        cell.descriptionLabel.text = story.abstract
+        cell.configure(with: story)
         return cell
     }
 }

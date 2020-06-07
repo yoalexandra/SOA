@@ -35,6 +35,3 @@ public class StoriesService: StoriesServiceProtocol {
         task?.resume()
     }
 }
-
-// guard let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=uXvUwtprWyPIvJ5hWPvCR6KCDdATV5A3") else { return }
-
