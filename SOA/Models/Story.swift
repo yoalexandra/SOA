@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct Story {
+struct Story: Equatable {
     
     let title: String
     let abstract: String
+    
 
     init(title: String, abstract: String) {
         self.title = title
         self.abstract = abstract
     }
 }
-
 
