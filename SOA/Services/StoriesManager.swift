@@ -15,6 +15,8 @@ class StoriesManager {
     private let locator = ServiceLocator.shared
     private let provider: StoriesServiceProtocol
     
+    
+    
     init() {
         locator.registerService(service: StoriesService() as StoriesServiceProtocol)
         provider = locator.getService()
@@ -22,10 +24,11 @@ class StoriesManager {
     
     func getStories(_ completion: @escaping (Result<[Story], NetworkError>) -> Void) {
         
-        let url = RequestURL.stories.buildUrl()
+        let urlRequest: RequestURL = .stories
         
-        provider.send(with: url) { result in
-            
+        guard let request = build(urlRequest) else { return }
+       
+        provider.send(with: request) { result in
             do {
                 let stories = try result.get()
                 DispatchQueue.main.async {
@@ -39,3 +42,31 @@ class StoriesManager {
 }
     
 
+private extension StoriesManager {
+    
+    private func build(_ request: RequestURL) -> URLRequest? {
+           guard let url = URL(string: request.url) else {
+               return nil
+           }
+
+           var urlRequest = URLRequest(url: url)
+           urlRequest.httpMethod = request.method.name
+
+           switch request.parameters {
+           case .body(let data):
+               urlRequest.httpBody = data
+
+           case .url(let dictionary):
+               guard var urlComponents = URLComponents(string: request.url) else {
+                   return urlRequest
+               }
+
+               urlComponents.queryItems = dictionary.compactMap { URLQueryItem(name: $0.key, value: $0.value) }
+               urlRequest.url = urlComponents.url
+           case .none:
+               break
+           }
+
+           return urlRequest
+       }
+}

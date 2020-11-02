@@ -14,11 +14,7 @@ class ViewController: UIViewController {
     
     private var items: [Story] = []
     private let storiesManager = StoriesManager.shared
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 

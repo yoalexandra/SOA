@@ -11,7 +11,7 @@ import Foundation
 protocol StoriesServiceProtocol {
     
     typealias result = (Result<[Story], NetworkError>) -> ()
-    func send(with url: URL, completion: @escaping result)
+    func send(with request: URLRequest, completion: @escaping result)
 }
 
 public class StoriesService: StoriesServiceProtocol {
@@ -23,8 +23,10 @@ public class StoriesService: StoriesServiceProtocol {
         self.parser = Parser()
     }
 
-    func send(with url: URL, completion: @escaping result) {
-        task = URLSession(configuration: .default).dataTask(with: url) { [unowned self] (data,_,_) in
+    func send(with request: URLRequest, completion: @escaping result) {
+        
+        task = URLSession(configuration: .default).dataTask(with: request) { [unowned self] (data,_,_) in
+      
             defer {
                 self.task = nil
             }
