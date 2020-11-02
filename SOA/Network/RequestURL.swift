@@ -8,33 +8,48 @@
 
 import Foundation
 
-let apiKey = "uXvUwtprWyPIvJ5hWPvCR6KCDdATV5A3"
+enum Parameters {
+    case body(Data)
+    case url([String: String?])
+    case none
+}
+
+enum HTTPMethod: String {
+    case post
+    case put
+    case get
+    case delete
+    case patch
+    
+    var name: String {
+        return rawValue.uppercased()
+    }
+}
 
 enum RequestURL {
     
-    static let baseUrl = "https://api.nytimes.com"
-    
     case stories
     
-    var path: String {
+    var url: String {
         switch self {
         case .stories:
-            return "/svc/topstories/v2/world.json"
+            return "https://api.nytimes.com/svc/topstories/v2/world.json"
         }
     }
     
-    var parameters: String? {
+    var method: HTTPMethod {
         switch self {
         case .stories:
-            return "?api-key=\(apiKey)"
+            return .get
         }
     }
     
-    func buildUrl() -> URL {
-        var absolutePath = "\(RequestURL.baseUrl)\(path)"
-        if let parameters = parameters {
-            absolutePath += parameters
+    var parameters: Parameters {
+        switch self {
+        case .stories:
+            return .url(["api-key": "uXvUwtprWyPIvJ5hWPvCR6KCDdATV5A3"])
         }
-        return URL(string: absolutePath)!
     }
 }
+
+
